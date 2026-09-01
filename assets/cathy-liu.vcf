@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Liu;Cathy;;;
+FN:Cathy Liu
+TITLE:独立研究员 / Independent Researcher
+ROLE:Independent Researcher
+EMAIL;TYPE=INTERNET:cathyliu41@gmail.com
+URL:https://cathyliucx.github.io/
+X-SOCIALPROFILE;TYPE=github:https://github.com/cathyliucx
+X-SOCIALPROFILE;TYPE=twitter:https://x.com/cathyliucx
+NOTE:Independent Researcher | AI Research | Quant Research
+END:VCARD
