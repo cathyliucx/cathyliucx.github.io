@@ -146,8 +146,11 @@ h1 em, .life-content em, .contact-section em { color: var(--life); font-style: n
 
 .life-section { min-height: 610px; padding: clamp(40px, 5vw, 75px) clamp(20px, 4vw, 64px); display: grid; grid-template-columns: 150px 1fr 240px; gap: 30px; align-items: center; background: var(--ink); color: var(--paper); border-bottom: 1px solid var(--paper); }
 .life-label { align-self: start; font-size: .6rem; }
+.life-title-link { text-decoration: none; }
 .life-content h2 { margin: 0 0 34px; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .96; }
 .life-content p { max-width: 590px; margin: 0; color: #aaa99f; line-height: 1.9; }
+.life-entry { display: inline-block; margin-top: 36px; padding-bottom: 7px; border-bottom: 1px solid var(--life); color: var(--life); font-size: .65rem; }
+.life-title-link:hover .life-entry { color: var(--paper); border-color: var(--paper); }
 .life-photo {
   position: relative;
   width: min(100%, 300px);
