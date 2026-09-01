@@ -58,6 +58,13 @@
 .quant-project { --project-accent: var(--quant); }
 .life-project { --project-accent: var(--life); }
 .life-category-sections { grid-template-columns: 1fr 1fr; }
+.life-post-list { display: grid; gap: 0; }
+.life-post-link { padding: 18px 0; display: grid; gap: 7px; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; }
+.life-post-link > span { color: var(--life); font: 400 .56rem/1 var(--mono); }
+.life-post-link h3 { margin: 0; font: 700 1rem/1.35 var(--display); }
+.life-post-link p { margin: 0; font-size: .8rem; }
+.life-post-link:hover h3 { color: var(--life); }
+.life-post-empty { color: var(--muted); }
 
 @media (max-width: 700px) {
   .project-page { min-height: calc(100vh - 64px); padding: 44px 18px 70px; }
