@@ -120,6 +120,9 @@ h1 em, .life-content em, .contact-section em { color: var(--life); font-style: n
 .project-list li { padding: 22px 0; display: grid; grid-template-columns: 48px 1fr; border-bottom: 1px solid var(--line); }
 .project-list li > span { font: 400 .62rem/1.5 var(--mono); color: var(--field); }
 .project-list h3 { margin: 0 0 7px; font: 700 1rem/1.35 var(--display); }
+.project-link { text-decoration: none; }
+.project-link::after { content: ' ↗'; color: var(--field); font-family: var(--mono); font-size: .72em; }
+.project-link:hover { color: var(--field); }
 .project-list p { margin: 0; color: var(--muted); font: 400 .63rem/1.5 var(--mono); }
 .view-all { margin-top: 32px; display: flex; justify-content: space-between; font: 500 .69rem/1 var(--mono); text-decoration: none; }
 .view-all:hover { color: var(--field); }
