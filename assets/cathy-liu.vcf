@@ -1,12 +1,12 @@
 BEGIN:VCARD
 VERSION:3.0
-N:Liu;Cathy;;;
-FN:Cathy Liu
-TITLE:独立研究员 / Independent Researcher
-ROLE:Independent Researcher
+N;CHARSET=UTF-8:刘;晨熙;;;
+FN;CHARSET=UTF-8:刘晨熙
+TITLE;CHARSET=UTF-8:独立AI研究员
+ROLE:Independent AI Researcher
 EMAIL;TYPE=INTERNET:cathyliu41@gmail.com
 URL:https://cathyliucx.github.io/
 X-SOCIALPROFILE;TYPE=github:https://github.com/cathyliucx
 X-SOCIALPROFILE;TYPE=twitter:https://x.com/cathyliucx
-NOTE:Independent Researcher | AI Research | Quant Research
+NOTE;CHARSET=UTF-8:独立AI研究员 | AI Research | Quant Research
 END:VCARD
