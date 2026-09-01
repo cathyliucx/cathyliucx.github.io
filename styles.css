@@ -60,11 +60,11 @@ a { color: inherit; }
 
 main, footer { width: min(1480px, 100%); margin: 0 auto; }
 .hero {
-  min-height: calc(100vh - 76px);
+  min-height: auto;
   padding: clamp(24px, 4vw, 62px) clamp(20px, 4vw, 64px) 28px;
   display: grid;
-  grid-template-columns: 110px minmax(0, 1fr) minmax(260px, 32%);
-  grid-template-rows: 1fr auto;
+  grid-template-columns: 110px minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
   gap: 30px;
   border-bottom: 1px solid var(--ink);
 }
@@ -80,8 +80,8 @@ h1 em, .life-content em, .contact-section em { color: var(--life); font-style: n
 .primary-link span { transition: transform .2s ease; }
 .primary-link:hover span { transform: translate(3px, 3px); }
 .text-link { font: 500 .76rem/1 var(--mono); text-underline-offset: 5px; }
-.hero-aside { position: relative; display: grid; place-items: center; border-left: 1px solid var(--line); }
-.orbit { position: relative; width: min(22vw, 300px); aspect-ratio: 1; border: 1px solid var(--ink); border-radius: 50%; display: grid; place-items: center; }
+.hero-aside { position: relative; grid-column: 2; min-height: 470px; display: grid; place-items: center; border-top: 1px solid var(--line); }
+.orbit { position: relative; width: min(30vw, 330px); aspect-ratio: 1; border: 1px solid var(--ink); border-radius: 50%; display: grid; place-items: center; }
 .orbit::before, .orbit::after { content: ''; position: absolute; border: 1px solid var(--line); border-radius: 50%; }
 .orbit::before { width: 70%; height: 70%; }
 .orbit::after { width: 38%; height: 38%; }
