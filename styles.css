@@ -106,9 +106,9 @@ h1 em, .life-content em, .contact-section em { color: var(--life); font-style: n
 .section-number { margin: 5px 0 0; font-size: .65rem; }
 .manifesto > p:last-child { max-width: 1120px; margin: 0; font: 700 clamp(1.9rem, 4.1vw, 4.4rem)/1.24 var(--display); letter-spacing: -.05em; }
 
-.research-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--ink); }
+.research-grid { display: grid; grid-template-columns: 1fr; border-bottom: 1px solid var(--ink); }
 .discipline { position: relative; min-height: 760px; padding: clamp(30px, 4vw, 64px); }
-.discipline + .discipline { border-left: 1px solid var(--ink); }
+.discipline + .discipline { border-top: 1px solid var(--ink); }
 .discipline-ai { --field: var(--ai); }
 .discipline-quant { --field: var(--quant); }
 .discipline-head { display: flex; justify-content: space-between; align-items: flex-start; }
