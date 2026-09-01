@@ -16,6 +16,12 @@
 .article-body p { margin: 0 0 24px; }
 .article-body ul { margin: 0 0 30px; padding-left: 24px; }
 .article-body li::marker { color: var(--article-accent); }
+.article-body figure { margin: 55px 0; }
+.article-body img { display: block; width: 100%; max-height: 760px; object-fit: contain; background: rgba(18,19,16,.04); }
+.article-body figcaption { margin-top: 12px; color: var(--muted); font: 400 .62rem/1.5 var(--mono); }
+.article-body pre { position: relative; margin: 42px 0; padding: 48px 24px 24px; overflow-x: auto; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: 400 .82rem/1.8 var(--mono); tab-size: 2; }
+.article-body pre .code-language { position: absolute; top: 16px; right: 18px; color: var(--article-accent); font-size: .58rem; text-transform: uppercase; }
+.article-body p code, .article-body li code { padding: 2px 6px; background: rgba(18,19,16,.08); color: var(--ink); font: 400 .88em/1.5 var(--mono); }
 .article-edit { max-width: 800px; margin: 100px auto 0; padding: 22px 0; display: flex; justify-content: space-between; border-top: 1px solid var(--line); color: var(--muted); font: 400 .62rem/1.4 var(--mono); }
 .article-edit a { color: var(--ink); }
 @media (max-width: 620px) {

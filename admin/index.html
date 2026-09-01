@@ -51,8 +51,16 @@
         <label>关键词 <input name="keywords" required placeholder="Agent · 方法学习 · 个人理解"></label>
         <label>摘要 <textarea name="summary" rows="3" required placeholder="用一到两句话介绍这篇内容。"></textarea></label>
         <label>正文
-          <span class="format-help">自由书写。使用 ## 二级标题、### 三级标题、- 列表项；空行分隔段落。</span>
-          <textarea name="body" rows="22" required placeholder="## 为什么关注这个问题&#10;&#10;从这里开始写正文。&#10;&#10;## 我的理解&#10;&#10;- 一个要点&#10;- 另一个要点"></textarea>
+          <span class="format-help">自由书写，不限定文章结构。支持标题、列表、图片、代码块与行内代码。</span>
+          <span class="editor-toolbar" aria-label="正文插入工具">
+            <button id="imageButton" type="button">插入图片</button>
+            <button id="codeBlockButton" type="button">代码块</button>
+            <button id="inlineCodeButton" type="button">行内代码</button>
+            <span>## 标题 &nbsp; - 列表</span>
+          </span>
+          <input id="imagePicker" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden>
+          <textarea name="body" rows="22" required placeholder="## 为什么关注这个问题&#10;&#10;从这里开始写正文。你可以自由组合文字、图片和代码。&#10;&#10;## 我的理解&#10;&#10;- 一个要点&#10;- 另一个要点"></textarea>
+          <span id="imageStatus" class="image-status"></span>
         </label>
         <div class="publish-actions"><button id="resetButton" class="secondary" type="button">清空</button><button id="publishButton" class="primary" type="submit" disabled>确认并发布 <span>↗</span></button></div>
         <p id="publishStatus" class="publish-status" role="status"></p>

@@ -9,10 +9,16 @@ const tokenInput = document.querySelector('#githubToken');
 const connectButton = document.querySelector('#connectButton');
 const publishButton = document.querySelector('#publishButton');
 const resetButton = document.querySelector('#resetButton');
+const imageButton = document.querySelector('#imageButton');
+const imagePicker = document.querySelector('#imagePicker');
+const imageStatus = document.querySelector('#imageStatus');
+const codeBlockButton = document.querySelector('#codeBlockButton');
+const inlineCodeButton = document.querySelector('#inlineCodeButton');
 const connectionState = document.querySelector('#connectionState');
 const publishStatus = document.querySelector('#publishStatus');
 let connected = false;
 let slugWasEdited = false;
+let pendingImages = [];
 
 tokenInput.value = sessionStorage.getItem('cathy_github_token') || '';
 const token = () => tokenInput.value.trim();
@@ -51,8 +57,50 @@ function updatePreview() {
   document.querySelector('#previewTitle').textContent = data.title || '文章标题';
   document.querySelector('#previewSummary').textContent = data.summary || '文章摘要会显示在这里。';
   document.querySelector('#previewKeywords').textContent = data.keywords || '关键词';
-  document.querySelector('#previewBody').innerHTML = data.body ? markdownToHtml(data.body) : '<p>正文预览会显示在这里。</p>';
+  const previewBody = pendingImages.reduce((body, image) => body.replaceAll(`upload://${image.id}`, image.previewUrl), data.body || '');
+  document.querySelector('#previewBody').innerHTML = previewBody ? markdownToHtml(previewBody) : '<p>正文预览会显示在这里。</p>';
 }
+
+function insertAtCursor(text, selectFrom = 0, selectLength = 0) {
+  const body = form.elements.body;
+  const start = body.selectionStart;
+  const end = body.selectionEnd;
+  body.setRangeText(text, start, end, 'end');
+  body.focus();
+  body.setSelectionRange(start + selectFrom, start + selectFrom + selectLength);
+  body.dispatchEvent(new Event('input', { bubbles: true }));
+}
+
+imageButton.addEventListener('click', () => imagePicker.click());
+imagePicker.addEventListener('change', () => {
+  const files = [...imagePicker.files];
+  for (const file of files) {
+    if (file.size > 8 * 1024 * 1024) {
+      imageStatus.textContent = `${file.name} 超过 8MB，未加入。`;
+      continue;
+    }
+    const id = `${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
+    const previewUrl = URL.createObjectURL(file);
+    pendingImages.push({ id, file, previewUrl });
+    insertAtCursor(`\n![${file.name.replace(/\.[^.]+$/, '')}](upload://${id})\n`);
+  }
+  imageStatus.textContent = pendingImages.length ? `已加入 ${pendingImages.length} 张图片，将随文章一起发布。` : '';
+  imagePicker.value = '';
+});
+
+codeBlockButton.addEventListener('click', () => {
+  const body = form.elements.body;
+  const selected = body.value.slice(body.selectionStart, body.selectionEnd);
+  const code = selected || '在这里粘贴代码';
+  const text = `\n\`\`\`python\n${code}\n\`\`\`\n`;
+  insertAtCursor(text, text.indexOf(code), code.length);
+});
+
+inlineCodeButton.addEventListener('click', () => {
+  const body = form.elements.body;
+  const selected = body.value.slice(body.selectionStart, body.selectionEnd) || '代码';
+  insertAtCursor(`\`${selected}\``, 1, selected.length);
+});
 
 connectButton.addEventListener('click', async () => {
   if (!token()) { setConnection(false, '请先输入 Token'); tokenInput.focus(); return; }
@@ -85,7 +133,15 @@ form.elements.section.addEventListener('change', () => {
   updatePreview();
 });
 form.addEventListener('input', updatePreview);
-resetButton.addEventListener('click', () => { form.reset(); slugWasEdited = false; publishStatus.textContent = ''; updatePreview(); });
+resetButton.addEventListener('click', () => {
+  pendingImages.forEach((image) => URL.revokeObjectURL(image.previewUrl));
+  pendingImages = [];
+  form.reset();
+  slugWasEdited = false;
+  imageStatus.textContent = '';
+  publishStatus.textContent = '';
+  updatePreview();
+});
 
 function decodeContent(encoded) {
   const bytes = Uint8Array.from(atob(encoded.replaceAll(/\s/g, '')), (char) => char.charCodeAt(0));
@@ -94,6 +150,17 @@ function decodeContent(encoded) {
 
 async function publishContent(data) {
   data.slug = normalizeSlug(data.slug);
+  const imageUploads = pendingImages.filter((image) => data.body.includes(`upload://${image.id}`));
+  const usedNames = new Set();
+  const imageEntries = imageUploads.map((image, index) => {
+    const extension = (image.file.name.match(/\.[a-z0-9]+$/i)?.[0] || '.jpg').toLowerCase();
+    let stem = image.file.name.replace(/\.[^.]+$/, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || `image-${index + 1}`;
+    while (usedNames.has(`${stem}${extension}`)) stem = `${stem}-${index + 1}`;
+    usedNames.add(`${stem}${extension}`);
+    const path = `assets/articles/${data.slug}/${stem}${extension}`;
+    data.body = data.body.replaceAll(`upload://${image.id}`, `../${path}`);
+    return { ...image, path };
+  });
   const articlePath = `articles/${data.slug}.html`;
   const exists = await fetch(`${API}/repos/${OWNER}/${REPO}/contents/${articlePath}?ref=${BRANCH}`, { headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${token()}`, 'X-GitHub-Api-Version': '2022-11-28' } });
   if (exists.ok) throw new Error('这个页面地址已经存在，请换一个');
@@ -111,20 +178,32 @@ async function publishContent(data) {
   const item = createListItem({ ...data, number });
   const nextTarget = insertContent(currentTarget, data.section, item);
   const articlePage = createArticlePage(data);
-  const [targetBlob, articleBlob] = await Promise.all([
+  const [targetBlob, articleBlob, ...imageBlobs] = await Promise.all([
     github(`/repos/${OWNER}/${REPO}/git/blobs`, { method: 'POST', body: JSON.stringify({ content: nextTarget, encoding: 'utf-8' }) }),
     github(`/repos/${OWNER}/${REPO}/git/blobs`, { method: 'POST', body: JSON.stringify({ content: articlePage, encoding: 'utf-8' }) }),
+    ...imageEntries.map(async (image) => github(`/repos/${OWNER}/${REPO}/git/blobs`, { method: 'POST', body: JSON.stringify({ content: await fileToBase64(image.file), encoding: 'base64' }) })),
   ]);
+  const treeEntries = [
+    { path: targetPath, mode: '100644', type: 'blob', sha: targetBlob.sha },
+    { path: articlePath, mode: '100644', type: 'blob', sha: articleBlob.sha },
+    ...imageEntries.map((image, index) => ({ path: image.path, mode: '100644', type: 'blob', sha: imageBlobs[index].sha })),
+  ];
   const tree = await github(`/repos/${OWNER}/${REPO}/git/trees`, {
     method: 'POST',
-    body: JSON.stringify({ base_tree: headCommit.tree.sha, tree: [
-      { path: targetPath, mode: '100644', type: 'blob', sha: targetBlob.sha },
-      { path: articlePath, mode: '100644', type: 'blob', sha: articleBlob.sha },
-    ] }),
+    body: JSON.stringify({ base_tree: headCommit.tree.sha, tree: treeEntries }),
   });
   const commit = await github(`/repos/${OWNER}/${REPO}/git/commits`, { method: 'POST', body: JSON.stringify({ message: `feat: publish ${data.title}`, tree: tree.sha, parents: [headSha] }) });
   await github(`/repos/${OWNER}/${REPO}/git/refs/heads/${BRANCH}`, { method: 'PATCH', body: JSON.stringify({ sha: commit.sha, force: false }) });
   return `https://${OWNER}.github.io/${articlePath}`;
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(',')[1]);
+    reader.onerror = () => reject(new Error(`无法读取图片：${file.name}`));
+    reader.readAsDataURL(file);
+  });
 }
 
 form.addEventListener('submit', async (event) => {

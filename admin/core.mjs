@@ -17,12 +17,45 @@ export function normalizeSlug(value) {
 export function markdownToHtml(markdown = '') {
   const output = [];
   let list = [];
+  let code = [];
+  let codeLanguage = '';
+  let inCode = false;
+  const safeUrl = (value) => /^(https?:\/\/|\.\.\/|\.\/|\/|blob:)/.test(value) ? value : '#';
+  const inline = (value) => {
+    const tokens = [];
+    let html = escapeHtml(value);
+    html = html.replace(/!\[([^\]]*)\]\(([^\s)]+)\)/g, (_, alt, url) => {
+      const token = `@@MEDIA_${tokens.length}@@`;
+      tokens.push(`<figure><img src="${escapeHtml(safeUrl(url))}" alt="${alt}" loading="lazy"><figcaption>${alt}</figcaption></figure>`);
+      return token;
+    });
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    return tokens.reduce((result, token, index) => result.replace(`@@MEDIA_${index}@@`, token), html);
+  };
   const flushList = () => {
     if (!list.length) return;
-    output.push(`<ul>${list.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`);
+    output.push(`<ul>${list.map((item) => `<li>${inline(item)}</li>`).join('')}</ul>`);
     list = [];
   };
   for (const sourceLine of String(markdown).split('\n')) {
+    const fence = sourceLine.trim().match(/^```([a-zA-Z0-9_+-]*)$/);
+    if (fence) {
+      flushList();
+      if (inCode) {
+        output.push(`<pre><span class="code-language">${escapeHtml(codeLanguage || 'CODE')}</span><code>${escapeHtml(code.join('\n'))}</code></pre>`);
+        code = [];
+        codeLanguage = '';
+        inCode = false;
+      } else {
+        inCode = true;
+        codeLanguage = fence[1];
+      }
+      continue;
+    }
+    if (inCode) {
+      code.push(sourceLine);
+      continue;
+    }
     const line = sourceLine.trim();
     if (!line) {
       flushList();
@@ -32,7 +65,7 @@ export function markdownToHtml(markdown = '') {
     if (heading) {
       flushList();
       const level = heading[1] === '##' ? 2 : 3;
-      output.push(`<h${level}>${escapeHtml(heading[2])}</h${level}>`);
+      output.push(`<h${level}>${inline(heading[2])}</h${level}>`);
       continue;
     }
     const item = line.match(/^-\s+(.+)$/);
@@ -41,9 +74,11 @@ export function markdownToHtml(markdown = '') {
       continue;
     }
     flushList();
-    output.push(`<p>${escapeHtml(line)}</p>`);
+    const content = inline(line);
+    output.push(content.startsWith('<figure>') && content.endsWith('</figure>') ? content : `<p>${content}</p>`);
   }
   flushList();
+  if (inCode) output.push(`<pre><span class="code-language">${escapeHtml(codeLanguage || 'CODE')}</span><code>${escapeHtml(code.join('\n'))}</code></pre>`);
   return output.join('\n');
 }
 
