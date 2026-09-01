@@ -105,32 +105,26 @@ h1 > em { display: inline-block; font-size: .84em; white-space: nowrap; }
   filter: grayscale(1) contrast(1.08);
 }
 .portrait-download::after {
-  content: '点击圆环下载名片 ↘';
+  content: '下载名片';
   position: absolute;
   top: calc(100% + 16px);
   left: 50%;
   color: var(--ink);
   font: 500 .52rem/1 var(--mono);
   white-space: nowrap;
-  transform: translateX(-50%);
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition: opacity .18s ease, transform .18s ease;
 }
 .portrait-download:hover {
   box-shadow: 0 0 0 1px var(--ink), 0 0 0 8px rgba(239, 91, 42, .15);
 }
 .orbit:hover { border-color: var(--life); }
-.identity-card {
-  position: absolute;
-  top: calc(100% + 52px);
-  left: 50%;
-  display: grid;
-  gap: 5px;
-  width: max-content;
-  text-align: center;
-  transform: translateX(-50%);
+.orbit:hover .portrait-download::after,
+.orbit:focus-visible .portrait-download::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
-.identity-card strong { font: 800 1rem/1.1 var(--display); letter-spacing: .04em; }
-.identity-card > span { color: var(--life); font: 500 .65rem/1.2 var(--mono); }
-.identity-card small { color: var(--muted); font: 400 .56rem/1.2 var(--mono); }
 .orbit-label { position: absolute; display: grid; place-items: center; width: 34px; height: 34px; color: white; border-radius: 50%; font: 500 .7rem/1 var(--mono); }
 .label-ai { top: 4%; left: 28%; background: var(--ai); }
 .label-quant { right: -3%; top: 51%; background: var(--quant); }
