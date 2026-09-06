@@ -38,7 +38,7 @@
 .project-meta-card { text-decoration: none; transition: color .2s, background .2s; }
 .project-meta-card:hover { color: var(--project-accent); }
 .project-sections { margin-top: 90px; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 5vw, 80px); }
-.ai-project .project-sections, .quant-project .project-sections { grid-template-columns: repeat(4, 1fr); gap: clamp(28px, 3.5vw, 56px); }
+.ai-project .project-sections, .quant-project .project-sections { grid-template-columns: 1fr; gap: clamp(48px, 7vw, 90px); }
 .project-section { border-top: 1px solid var(--ink); padding-top: 24px; }
 .project-section h2 { margin: 0 0 24px; font-size: clamp(1.6rem, 3vw, 2.5rem); }
 .project-section p { margin: 0; color: var(--muted); line-height: 1.85; }
