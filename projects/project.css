@@ -38,22 +38,10 @@
 .project-meta-card { text-decoration: none; transition: color .2s, background .2s; }
 .project-meta-card:hover { color: var(--project-accent); }
 .project-sections { margin-top: 90px; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 5vw, 80px); }
+.ai-project .project-sections, .quant-project .project-sections { grid-template-columns: repeat(4, 1fr); gap: clamp(28px, 3.5vw, 56px); }
 .project-section { border-top: 1px solid var(--ink); padding-top: 24px; }
 .project-section h2 { margin: 0 0 24px; font-size: clamp(1.6rem, 3vw, 2.5rem); }
 .project-section p { margin: 0; color: var(--muted); line-height: 1.85; }
-.edit-note {
-  margin-top: 100px;
-  padding: 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  background: var(--ink);
-  color: var(--paper);
-}
-.edit-note p { margin: 0; font: 400 .66rem/1.6 var(--mono); }
-.edit-button { flex: 0 0 auto; padding: 13px 16px; border: 1px solid #5b5c55; font: 500 .65rem/1 var(--mono); text-decoration: none; }
-.edit-button:hover { background: var(--paper); color: var(--ink); }
 .ai-project { --project-accent: var(--ai); }
 .quant-project { --project-accent: var(--quant); }
 .life-project { --project-accent: var(--life); }
@@ -74,5 +62,4 @@
   .project-meta { grid-template-columns: 1fr; }
   .project-meta div + div, .project-meta-card + .project-meta-card { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
   .project-sections { margin-top: 64px; grid-template-columns: 1fr; }
-  .edit-note { margin-top: 70px; align-items: flex-start; flex-direction: column; }
 }
