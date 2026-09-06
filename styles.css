@@ -163,7 +163,7 @@ h1 > em { display: inline-block; font-size: .84em; white-space: nowrap; }
 .section-heading h2 { margin: 0; font-size: clamp(3rem, 7vw, 7rem); line-height: .82; }
 .section-heading > p { margin: 0; font: 400 .58rem/1.65 var(--mono); text-align: right; }
 .notes-intro { max-width: 650px; margin: -24px 0 0 175px; color: var(--muted); font-size: clamp(.9rem, 1.2vw, 1.05rem); line-height: 1.8; }
-.note-row { padding: 25px 0; display: grid; grid-template-columns: 125px 90px 1fr 30px; align-items: center; gap: 16px; border-top: 1px solid var(--line); }
+.note-row { padding: 25px 0; display: grid; grid-template-columns: 125px 90px 1fr 30px; align-items: center; gap: 16px; border-top: 1px solid var(--line); color: inherit; text-decoration: none; }
 .note-row:last-child { border-bottom: 1px solid var(--line); }
 .note-row time { color: var(--muted); font: 400 .64rem/1 var(--mono); }
 .note-kind { font: 500 .61rem/1 var(--mono); }
