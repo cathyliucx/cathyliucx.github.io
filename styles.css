@@ -141,14 +141,13 @@ h1 > em { display: inline-block; font-size: .84em; white-space: nowrap; }
 .section-heading h2 { margin: 0; font-size: clamp(3rem, 7vw, 7rem); line-height: .82; }
 .section-heading > p { margin: 0; font: 400 .58rem/1.65 var(--mono); text-align: right; }
 .notes-intro { max-width: 650px; margin: -24px 0 0 175px; color: var(--muted); font-size: clamp(.9rem, 1.2vw, 1.05rem); line-height: 1.8; }
-.note-row { padding: 25px 0; display: grid; grid-template-columns: 94px 108px 1fr 30px; align-items: center; gap: 16px; border-top: 1px solid var(--line); color: inherit; text-decoration: none; }
+.note-row { padding: 25px 0; display: grid; grid-template-columns: 70px 108px 1fr 30px; align-items: center; gap: 16px; border-top: 1px solid var(--line); color: inherit; text-decoration: none; }
 .note-row:last-child { border-bottom: 1px solid var(--line); }
 .note-row time { color: var(--muted); font: 400 .64rem/1 var(--mono); }
-.note-kind { justify-self: start; padding: 7px 10px; display: inline-flex; align-items: center; border: 1px solid currentColor; font: 500 .61rem/1 var(--mono); }
-.note-kind::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 7px; border-radius: 50%; background: currentColor; }
-.ai-dot { color: var(--ai); background: rgba(37, 99, 235, .08); }
-.quant-dot { color: var(--quant); background: rgba(17, 132, 91, .08); }
-.life-dot { color: var(--life); background: rgba(239, 91, 42, .08); }
+.note-kind { justify-self: start; font: 600 .64rem/1 var(--mono); }
+.ai-dot { color: var(--ai); }
+.quant-dot { color: var(--quant); }
+.life-dot { color: var(--life); }
 .note-row h3 { margin: 0; font: 600 clamp(.95rem, 1.6vw, 1.25rem)/1.4 var(--display); }
 .note-row .arrow { justify-self: end; transition: transform .2s; }
 .note-row:hover .arrow { transform: translate(4px, -4px); }
@@ -244,7 +243,7 @@ footer a { color: var(--paper); text-decoration: none; }
   .section-heading > div { gap: 20px; }
   .section-heading > p { display: none; }
   .notes-intro { margin: -24px 0 42px; }
-  .note-row { grid-template-columns: 76px 1fr 20px; grid-template-rows: auto auto; padding: 21px 0; gap: 6px 12px; }
+  .note-row { grid-template-columns: 58px 1fr 20px; grid-template-rows: auto auto; padding: 21px 0; gap: 6px 12px; }
   .note-kind { grid-column: 1; grid-row: 1 / 3; }
   .note-row time { grid-column: 2; grid-row: 2; }
   .note-row h3 { grid-column: 2; grid-row: 1; font-size: .92rem; }
