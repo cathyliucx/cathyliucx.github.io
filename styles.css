@@ -76,7 +76,7 @@ h1 { margin: 0; max-width: 720px; font-size: clamp(2.35rem, 4.2vw, 4rem); line-h
 h1 em, .life-content em, .contact-section em { color: var(--life); font-style: normal; }
 h1 > em { display: inline-block; font-size: .8em; }
 .intro { max-width: 590px; margin: 28px 0 0; color: #3d3e39; font-size: clamp(.92rem, 1.1vw, 1.02rem); line-height: 1.8; }
-.translation { display: block; margin-top: .55em; color: var(--muted); font: 500 .74em/1.7 var(--sans); letter-spacing: 0; }
+.translation { display: block; margin-top: .55em; color: var(--muted); font: 500 .68em/1.7 var(--sans); letter-spacing: 0; }
 .discipline h2 .translation, .section-heading h2 .translation, .life-content h2 .translation, .contact-section h2 .translation { font-size: .32em; }
 .life-content .translation, .contact-section .translation { color: #aaa99f; }
 .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 30px; }
