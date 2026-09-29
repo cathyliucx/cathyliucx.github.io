@@ -76,7 +76,9 @@ h1 { margin: 0; max-width: 720px; font-size: clamp(2.35rem, 4.2vw, 4rem); line-h
 h1 em, .life-content em, .contact-section em { color: var(--life); font-style: normal; }
 h1 > em { display: inline-block; font-size: .8em; }
 .intro { max-width: 590px; margin: 28px 0 0; color: #3d3e39; font-size: clamp(.92rem, 1.1vw, 1.02rem); line-height: 1.8; }
-.translation { display: block; margin-top: .55em; color: var(--muted); font: 500 .68em/1.7 var(--sans); letter-spacing: 0; }
+.hero-thought { max-width: 720px; margin: 20px 0 0; color: var(--ink); font: 800 clamp(2.35rem, 4.2vw, 4rem)/1.03 var(--display); letter-spacing: -.065em; }
+.translation { display: inline; margin-left: .42em; color: var(--muted); font: 500 .68em/1.7 'Noto Sans SC', sans-serif; letter-spacing: 0; }
+.hero-thought .translation { margin-left: .42em; font-size: 1rem; letter-spacing: 0; }
 .discipline h2 .translation, .section-heading h2 .translation, .life-content h2 .translation, .contact-section h2 .translation { font-size: .32em; }
 .life-content .translation, .contact-section .translation { color: #aaa99f; }
 .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 30px; }
@@ -117,8 +119,8 @@ h1 > em { display: inline-block; font-size: .8em; }
 .section-number { margin: 5px 0 0; font-size: .65rem; }
 .manifesto-copy p { max-width: 760px; margin: 0; font: 700 clamp(1.6rem, 3.2vw, 3.4rem)/1.28 var(--display); letter-spacing: -.05em; }
 .manifesto-copy .translation { max-width: 620px; }
-.research-direction { margin: 0; border: 1px solid var(--line); background: #fff; }
-.research-direction img { display: block; width: 100%; max-height: 340px; object-fit: contain; }
+.research-direction { margin: 0; }
+.research-direction img { display: block; width: 100%; max-height: 340px; object-fit: contain; mix-blend-mode: multiply; }
 
 .research-grid { display: grid; grid-template-columns: 1fr; border-bottom: 1px solid var(--ink); }
 .discipline { position: relative; min-height: 540px; padding: clamp(30px, 4vw, 52px); }
@@ -207,7 +209,16 @@ h1 > em { display: inline-block; font-size: .8em; }
 .contact-section { padding: clamp(62px, 7vw, 88px) clamp(20px, 8vw, 130px); background: var(--ink); color: var(--paper); }
 .contact-section > p { margin: 0 0 62px; font-size: .63rem; }
 .contact-section h2 { max-width: 760px; margin: 0; font-size: clamp(2.4rem, 4.4vw, 4.5rem); line-height: 1.03; }
-.contact-section > .contact-intro { max-width: 650px; margin: 34px 0 0; color: #aaa99f; font-size: clamp(.95rem, 1.25vw, 1.12rem); line-height: 1.9; }
+.contact-intro-row { max-width: 730px; margin: 34px 0 0; display: flex; align-items: center; gap: 24px; }
+.contact-intro { flex: 1; margin: 0; color: #aaa99f; font-size: clamp(.95rem, 1.25vw, 1.12rem); line-height: 1.9; }
+.idea-light { flex: 0 0 auto; width: 52px; height: 52px; display: grid; place-items: center; color: var(--ink); background: var(--paper); border: 1px solid var(--paper); border-radius: 50%; cursor: default; outline: none; transition: background .24s ease, border-color .24s ease, box-shadow .24s ease, transform .24s ease; }
+.idea-light svg { width: 31px; height: 31px; overflow: visible; }
+.idea-light path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.idea-light .bulb-fill { fill: transparent; transition: fill .24s ease; }
+.idea-light .idea-rays { stroke: var(--life); opacity: 0; transition: opacity .24s ease; }
+.idea-light:hover, .idea-light:focus-visible { background: #fff8c8; border-color: #fff1a3; box-shadow: 0 0 0 5px rgba(239, 91, 42, .16), 0 0 24px rgba(255, 210, 77, .62); transform: translateY(-3px); }
+.idea-light:hover .bulb-fill, .idea-light:focus-visible .bulb-fill { fill: #ffd24d; }
+.idea-light:hover .idea-rays, .idea-light:focus-visible .idea-rays { opacity: 1; }
 .contact-links { margin-top: 72px; display: flex; gap: 14px; flex-wrap: wrap; }
 .contact-links a { min-width: 150px; padding: 16px 18px; border: 1px solid #5b5c55; font: 500 .68rem/1 var(--mono); text-decoration: none; transition: background .2s, color .2s; }
 .contact-links a:hover { background: var(--paper); color: var(--ink); }
@@ -261,6 +272,8 @@ footer a { color: var(--paper); text-decoration: none; }
   .life-stamp { right: -24px; bottom: -42px; width: 108px; height: 108px; }
   .contact-section { padding: 82px 18px; }
   .contact-section > p { margin-bottom: 42px; }
+  .contact-intro-row { gap: 16px; }
+  .idea-light { width: 46px; height: 46px; }
   .contact-links { margin-top: 50px; }
   footer { padding: 22px 18px; gap: 12px; flex-wrap: wrap; }
   footer span:nth-child(2) { display: none; }
