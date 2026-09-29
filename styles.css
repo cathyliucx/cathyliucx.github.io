@@ -60,27 +60,27 @@ a { color: inherit; }
 
 main, footer { width: min(1480px, 100%); margin: 0 auto; }
 .hero {
-  min-height: calc(100vh - 76px);
-  padding: clamp(24px, 4vw, 62px) clamp(20px, 4vw, 64px) 28px;
+  min-height: min(580px, calc(100vh - 68px));
+  padding: clamp(24px, 3vw, 42px) clamp(20px, 4vw, 64px) 24px;
   display: grid;
-  grid-template-columns: 110px minmax(0, 1fr) minmax(260px, 32%);
+  grid-template-columns: 72px minmax(0, 1fr) minmax(220px, 28%);
   grid-template-rows: 1fr auto;
   gap: 30px;
   border-bottom: 1px solid var(--ink);
 }
 .hero-index { padding-top: 9px; font-size: .65rem; writing-mode: vertical-rl; transform: rotate(180deg); }
-.hero-copy { align-self: center; padding: 5vh 0; }
-.eyebrow { margin: 0 0 30px; font: 500 .67rem/1 var(--mono); letter-spacing: .12em; }
+.hero-copy { align-self: center; padding: 2vh 0; }
+.eyebrow { margin: 0 0 22px; font: 500 .67rem/1 var(--mono); letter-spacing: .12em; }
 h1, h2 { font-family: var(--display); letter-spacing: -.065em; }
-h1 { margin: 0; max-width: 880px; font-size: clamp(2.6rem, 5.5vw, 5.6rem); line-height: 1; font-weight: 800; }
+h1 { margin: 0; max-width: 720px; font-size: clamp(2.35rem, 4.2vw, 4rem); line-height: 1.03; font-weight: 800; }
 h1 em, .life-content em, .contact-section em { color: var(--life); font-style: normal; }
 h1 > em { display: inline-block; font-size: .8em; }
-.intro { max-width: 650px; margin: 36px 0 0; color: #3d3e39; font-size: clamp(.95rem, 1.25vw, 1.12rem); line-height: 1.9; }
+.intro { max-width: 590px; margin: 28px 0 0; color: #3d3e39; font-size: clamp(.92rem, 1.1vw, 1.02rem); line-height: 1.8; }
 .translation { display: block; margin-top: .55em; color: var(--muted); font: 500 .42em/1.6 var(--sans); letter-spacing: 0; }
 .intro .translation, .discipline-lead .translation, .notes-intro .translation, .life-content .translation { font-size: .9em; }
 .life-content .translation, .contact-section .translation { color: #aaa99f; }
 .contact-section .translation { font-size: .35em; }
-.hero-actions { display: flex; align-items: center; gap: 28px; margin-top: 42px; }
+.hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 30px; }
 .primary-link { min-width: 178px; padding: 15px 18px; display: flex; justify-content: space-between; background: var(--ink); color: var(--paper); font: 500 .78rem/1 var(--mono); text-decoration: none; }
 .primary-link span { transition: transform .2s ease; }
 .primary-link:hover span { transform: translate(3px, 3px); }
@@ -119,14 +119,14 @@ h1 > em { display: inline-block; font-size: .8em; }
 .manifesto > p:last-child { max-width: 980px; margin: 0; font: 700 clamp(1.6rem, 3.2vw, 3.4rem)/1.28 var(--display); letter-spacing: -.05em; }
 
 .research-grid { display: grid; grid-template-columns: 1fr; border-bottom: 1px solid var(--ink); }
-.discipline { position: relative; min-height: 640px; padding: clamp(30px, 4vw, 56px); }
+.discipline { position: relative; min-height: 540px; padding: clamp(30px, 4vw, 52px); }
 .discipline + .discipline { border-top: 1px solid var(--ink); }
 .discipline-ai { --field: var(--ai); }
 .discipline-quant { --field: var(--quant); }
 .discipline-head { display: flex; justify-content: space-between; align-items: flex-start; }
 .tag { padding: 7px 9px; background: var(--field); color: white; font-size: .58rem; }
 .symbol { color: var(--field); font: 800 clamp(2.2rem, 4vw, 4rem)/1 var(--display); letter-spacing: -.08em; }
-.discipline h2 { margin: clamp(46px, 6vw, 78px) 0 18px; font-size: clamp(2.4rem, 4.5vw, 4.8rem); line-height: .95; }
+.discipline h2 { margin: clamp(40px, 5vw, 64px) 0 16px; font-size: clamp(2.2rem, 3.7vw, 3.8rem); line-height: 1; }
 .discipline-lead { max-width: 490px; min-height: 0; margin: 0 0 44px; color: var(--muted); line-height: 1.75; }
 .project-list { padding: 0; margin: 0; list-style: none; border-top: 1px solid var(--ink); }
 .project-list li { padding: 22px 0; display: grid; grid-template-columns: 48px 1fr; border-bottom: 1px solid var(--line); }
@@ -139,10 +139,10 @@ h1 > em { display: inline-block; font-size: .8em; }
 .view-all { margin-top: 32px; display: flex; justify-content: space-between; font: 500 .69rem/1 var(--mono); text-decoration: none; }
 .view-all:hover { color: var(--field); }
 
-.notes-section { padding: clamp(54px, 7vw, 90px) clamp(20px, 4vw, 64px); border-bottom: 1px solid var(--ink); }
+.notes-section { padding: clamp(48px, 6vw, 76px) clamp(20px, 4vw, 64px); border-bottom: 1px solid var(--ink); }
 .section-heading { margin-bottom: 48px; display: flex; justify-content: space-between; align-items: end; }
 .section-heading > div { display: flex; gap: 50px; align-items: start; }
-.section-heading h2 { margin: 0; font-size: clamp(2.4rem, 5vw, 5.4rem); line-height: .9; }
+.section-heading h2 { margin: 0; font-size: clamp(2.2rem, 4.1vw, 4.25rem); line-height: .95; }
 .section-heading > p { margin: 0; font: 400 .58rem/1.65 var(--mono); text-align: right; }
 .notes-intro { max-width: 650px; margin: -24px 0 0 175px; color: var(--muted); font-size: clamp(.9rem, 1.2vw, 1.05rem); line-height: 1.8; }
 .note-row { padding: 25px 0; display: grid; grid-template-columns: 70px 108px 1fr 30px; align-items: center; gap: 16px; border-top: 1px solid var(--line); color: inherit; text-decoration: none; }
@@ -156,10 +156,10 @@ h1 > em { display: inline-block; font-size: .8em; }
 .note-row .arrow { justify-self: end; transition: transform .2s; }
 .note-row:hover .arrow { transform: translate(4px, -4px); }
 
-.life-section { min-height: 540px; padding: clamp(40px, 5vw, 64px) clamp(20px, 4vw, 64px); display: grid; grid-template-columns: 130px 1fr 220px; gap: 30px; align-items: center; background: var(--ink); color: var(--paper); border-bottom: 1px solid var(--paper); }
+.life-section { min-height: 480px; padding: clamp(40px, 4vw, 56px) clamp(20px, 4vw, 64px); display: grid; grid-template-columns: 110px 1fr 200px; gap: 30px; align-items: center; background: var(--ink); color: var(--paper); border-bottom: 1px solid var(--paper); }
 .life-label { align-self: start; font-size: .6rem; }
 .life-title-link { text-decoration: none; }
-.life-content h2 { margin: 0 0 28px; font-size: clamp(2.5rem, 4.5vw, 5rem); line-height: 1; }
+.life-content h2 { margin: 0 0 24px; font-size: clamp(2.25rem, 3.7vw, 4rem); line-height: 1.03; }
 .life-content p { max-width: 590px; margin: 0; color: #aaa99f; line-height: 1.9; }
 .life-entry { display: inline-block; margin-top: 36px; padding-bottom: 7px; border-bottom: 1px solid var(--life); color: var(--life); font-size: .65rem; }
 .life-title-link:hover .life-entry { color: var(--paper); border-color: var(--paper); }
@@ -202,9 +202,9 @@ h1 > em { display: inline-block; font-size: .8em; }
   transform: rotate(9deg);
 }
 
-.contact-section { padding: clamp(70px, 8vw, 110px) clamp(20px, 8vw, 130px); background: var(--ink); color: var(--paper); }
+.contact-section { padding: clamp(62px, 7vw, 88px) clamp(20px, 8vw, 130px); background: var(--ink); color: var(--paper); }
 .contact-section > p { margin: 0 0 62px; font-size: .63rem; }
-.contact-section h2 { max-width: 900px; margin: 0; font-size: clamp(2.6rem, 5.6vw, 5.8rem); line-height: 1; }
+.contact-section h2 { max-width: 760px; margin: 0; font-size: clamp(2.4rem, 4.4vw, 4.5rem); line-height: 1.03; }
 .contact-section > .contact-intro { max-width: 650px; margin: 34px 0 0; color: #aaa99f; font-size: clamp(.95rem, 1.25vw, 1.12rem); line-height: 1.9; }
 .contact-intro .translation { font-size: .9em; }
 .contact-links { margin-top: 72px; display: flex; gap: 14px; flex-wrap: wrap; }
@@ -232,10 +232,10 @@ footer a { color: var(--paper); text-decoration: none; }
   .site-header { height: 64px; padding: 0 18px; }
   .nav-links { gap: 13px; }
   .nav-links a { font-size: .58rem; }
-  .hero { min-height: calc(100vh - 64px); padding: 25px 18px; grid-template-columns: 1fr; }
+  .hero { min-height: auto; padding: 25px 18px 38px; grid-template-columns: 1fr; }
   .hero-index { writing-mode: initial; transform: none; }
   .hero-copy { padding: 3vh 0; }
-  h1 { font-size: clamp(2.5rem, 12vw, 3.35rem); }
+  h1 { font-size: clamp(2.35rem, 11vw, 3.1rem); }
   .intro { margin-top: 26px; }
   .hero-aside, .scroll-note { grid-column: 1; }
   .hero-aside { min-height: 270px; }
