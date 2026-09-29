@@ -76,10 +76,9 @@ h1 { margin: 0; max-width: 720px; font-size: clamp(2.35rem, 4.2vw, 4rem); line-h
 h1 em, .life-content em, .contact-section em { color: var(--life); font-style: normal; }
 h1 > em { display: inline-block; font-size: .8em; }
 .intro { max-width: 590px; margin: 28px 0 0; color: #3d3e39; font-size: clamp(.92rem, 1.1vw, 1.02rem); line-height: 1.8; }
-.translation { display: block; margin-top: .55em; color: var(--muted); font: 500 .42em/1.6 var(--sans); letter-spacing: 0; }
-.intro .translation, .discipline-lead .translation, .notes-intro .translation, .life-content .translation { font-size: .9em; }
+.translation { display: block; margin-top: .55em; color: var(--muted); font: 500 .74em/1.7 var(--sans); letter-spacing: 0; }
+.discipline h2 .translation, .section-heading h2 .translation, .life-content h2 .translation, .contact-section h2 .translation { font-size: .32em; }
 .life-content .translation, .contact-section .translation { color: #aaa99f; }
-.contact-section .translation { font-size: .35em; }
 .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 30px; }
 .primary-link { min-width: 178px; padding: 15px 18px; display: flex; justify-content: space-between; background: var(--ink); color: var(--paper); font: 500 .78rem/1 var(--mono); text-decoration: none; }
 .primary-link span { transition: transform .2s ease; }
@@ -206,7 +205,6 @@ h1 > em { display: inline-block; font-size: .8em; }
 .contact-section > p { margin: 0 0 62px; font-size: .63rem; }
 .contact-section h2 { max-width: 760px; margin: 0; font-size: clamp(2.4rem, 4.4vw, 4.5rem); line-height: 1.03; }
 .contact-section > .contact-intro { max-width: 650px; margin: 34px 0 0; color: #aaa99f; font-size: clamp(.95rem, 1.25vw, 1.12rem); line-height: 1.9; }
-.contact-intro .translation { font-size: .9em; }
 .contact-links { margin-top: 72px; display: flex; gap: 14px; flex-wrap: wrap; }
 .contact-links a { min-width: 150px; padding: 16px 18px; border: 1px solid #5b5c55; font: 500 .68rem/1 var(--mono); text-decoration: none; transition: background .2s, color .2s; }
 .contact-links a:hover { background: var(--paper); color: var(--ink); }
