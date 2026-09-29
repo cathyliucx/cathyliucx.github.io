@@ -113,9 +113,12 @@ h1 > em { display: inline-block; font-size: .8em; }
 .coordinates { position: absolute; right: 0; bottom: 0; font-size: .57rem; line-height: 1.7; text-align: right; }
 .scroll-note { grid-column: 2; font-size: .58rem; }
 
-.manifesto { padding: clamp(54px, 7vw, 100px) clamp(20px, 8vw, 130px); display: grid; grid-template-columns: 100px 1fr; border-bottom: 1px solid var(--ink); }
+.manifesto { padding: clamp(54px, 7vw, 100px) clamp(20px, 8vw, 130px); display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(240px, 380px); gap: clamp(28px, 4vw, 72px); align-items: center; border-bottom: 1px solid var(--ink); }
 .section-number { margin: 5px 0 0; font-size: .65rem; }
-.manifesto > p:last-child { max-width: 980px; margin: 0; font: 700 clamp(1.6rem, 3.2vw, 3.4rem)/1.28 var(--display); letter-spacing: -.05em; }
+.manifesto-copy p { max-width: 760px; margin: 0; font: 700 clamp(1.6rem, 3.2vw, 3.4rem)/1.28 var(--display); letter-spacing: -.05em; }
+.manifesto-copy .translation { max-width: 620px; }
+.research-direction { margin: 0; border: 1px solid var(--line); background: #fff; }
+.research-direction img { display: block; width: 100%; max-height: 340px; object-fit: contain; }
 
 .research-grid { display: grid; grid-template-columns: 1fr; border-bottom: 1px solid var(--ink); }
 .discipline { position: relative; min-height: 540px; padding: clamp(30px, 4vw, 52px); }
@@ -218,7 +221,8 @@ footer a { color: var(--paper); text-decoration: none; }
   .hero-aside { grid-column: 2; min-height: 330px; border-left: 0; border-top: 1px solid var(--line); }
   .orbit { width: 260px; }
   .scroll-note { grid-column: 2; }
-  .manifesto { grid-template-columns: 60px 1fr; }
+  .manifesto { grid-template-columns: 60px minmax(0, 1fr); }
+  .research-direction { grid-column: 2; width: min(100%, 420px); }
   .research-grid { grid-template-columns: 1fr; }
   .discipline { min-height: auto; }
   .discipline + .discipline { border-left: 0; border-top: 1px solid var(--ink); }
@@ -238,7 +242,8 @@ footer a { color: var(--paper); text-decoration: none; }
   .hero-aside, .scroll-note { grid-column: 1; }
   .hero-aside { min-height: 270px; }
   .orbit { width: 215px; }
-  .manifesto { padding: 66px 18px; grid-template-columns: 1fr; gap: 34px; }
+  .manifesto { padding: 66px 18px; grid-template-columns: 1fr; gap: 28px; }
+  .research-direction { grid-column: 1; width: 100%; }
   .discipline { padding: 42px 18px 54px; }
   .discipline h2 { margin-top: 70px; }
   .discipline-lead { min-height: 0; margin-bottom: 42px; }
