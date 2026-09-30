@@ -215,12 +215,13 @@ h1 > em { display: inline-block; font-size: .8em; }
 .contact-heading-content { display: inline-flex; align-items: center; white-space: nowrap; }
 .contact-section h2 .idea-light { margin-left: .36em; vertical-align: .08em; }
 .contact-intro { max-width: 650px; margin: 34px 0 0; }
-.idea-light { flex: 0 0 auto; width: 52px; height: 52px; display: grid; place-items: center; color: var(--ink); background: var(--paper); border: 1px solid var(--paper); border-radius: 50%; cursor: default; outline: none; transition: background .24s ease, border-color .24s ease, box-shadow .24s ease, transform .24s ease; }
-.idea-light svg { width: 31px; height: 31px; overflow: visible; }
+.idea-light { flex: 0 0 auto; width: 42px; height: 42px; display: grid; place-items: center; color: #d9d8d0; background: transparent; border: 0; cursor: default; outline: none; transition: color .24s ease, transform .24s ease; }
+.idea-light svg { width: 29px; height: 29px; overflow: visible; transition: filter .24s ease; }
 .idea-light path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .idea-light .bulb-fill { fill: transparent; transition: fill .24s ease; }
-.idea-light .idea-rays { stroke: var(--life); opacity: 0; transition: opacity .24s ease; }
-.idea-light:hover, .idea-light:focus-visible { background: #fff8c8; border-color: #fff1a3; box-shadow: 0 0 0 5px rgba(239, 91, 42, .16), 0 0 24px rgba(255, 210, 77, .62); transform: translateY(-3px); }
+.idea-light .idea-rays { stroke: currentColor; opacity: 0; transition: opacity .24s ease; }
+.idea-light:hover, .idea-light:focus-visible { color: #ffd24d; transform: translateY(-3px); }
+.idea-light:hover svg, .idea-light:focus-visible svg { filter: drop-shadow(0 0 5px rgba(255, 210, 77, .9)) drop-shadow(0 0 15px rgba(255, 210, 77, .65)); }
 .idea-light:hover .bulb-fill, .idea-light:focus-visible .bulb-fill { fill: #ffd24d; }
 .idea-light:hover .idea-rays, .idea-light:focus-visible .idea-rays { opacity: 1; }
 .contact-links { margin-top: 72px; display: flex; gap: 14px; flex-wrap: wrap; }
@@ -279,7 +280,7 @@ footer a { color: var(--paper); text-decoration: none; }
   .life-stamp { right: -24px; bottom: -42px; width: 108px; height: 108px; }
   .contact-section { padding: 82px 18px; }
   .contact-section > p { margin-bottom: 42px; }
-  .idea-light { width: 46px; height: 46px; }
+  .idea-light { width: 40px; height: 40px; }
   .contact-links { margin-top: 50px; }
   footer { padding: 22px 18px; gap: 12px; flex-wrap: wrap; }
   footer span:nth-child(2) { display: none; }
