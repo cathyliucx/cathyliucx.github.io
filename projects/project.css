@@ -42,6 +42,12 @@
 .project-section { border-top: 1px solid var(--ink); padding-top: 24px; }
 .project-section h2 { margin: 0 0 24px; font-size: clamp(1.6rem, 3vw, 2.5rem); }
 .project-section p { margin: 0; color: var(--muted); line-height: 1.85; }
+.project-section figure { margin: 32px 0; }
+.project-section img, .project-section video { display: block; width: 100%; max-height: 760px; object-fit: contain; background: rgba(18,19,16,.04); }
+.project-section figcaption { margin-top: 12px; color: var(--muted); font: 400 .62rem/1.5 var(--mono); }
+.project-section pre { position: relative; margin: 28px 0; padding: 42px 20px 20px; overflow-x: auto; background: var(--ink); color: var(--paper); font: 400 .82rem/1.8 var(--mono); }
+.project-section pre .code-language { position: absolute; top: 14px; right: 16px; color: var(--project-accent); font-size: .58rem; text-transform: uppercase; }
+.project-section p code, .project-section li code { padding: 2px 6px; background: rgba(18,19,16,.08); color: var(--ink); font: 400 .88em/1.5 var(--mono); }
 .ai-project { --project-accent: var(--ai); }
 .quant-project { --project-accent: var(--quant); }
 .life-project { --project-accent: var(--life); }
