@@ -166,7 +166,8 @@ h1 > em { display: inline-block; font-size: .8em; }
 .life-label { align-self: start; font-size: .6rem; }
 .life-title-link { text-decoration: none; }
 .life-content h2 { margin: 0 0 24px; font-size: clamp(2.25rem, 3.7vw, 4rem); line-height: 1.03; }
-.life-content p { max-width: 590px; margin: 0; color: #aaa99f; line-height: 1.9; }
+.life-content p, .contact-intro { color: #aaa99f; font-size: 1rem; font-weight: 400; line-height: 1.9; }
+.life-content p { max-width: 590px; margin: 0; }
 .life-entry { display: inline-block; margin-top: 36px; padding-bottom: 7px; border-bottom: 1px solid var(--life); color: var(--life); font-size: .65rem; }
 .life-title-link:hover .life-entry { color: var(--paper); border-color: var(--paper); }
 .life-photo {
@@ -213,7 +214,7 @@ h1 > em { display: inline-block; font-size: .8em; }
 .contact-section h2 { max-width: 760px; margin: 0; font-size: clamp(2.4rem, 4.4vw, 4.5rem); line-height: 1.03; }
 .contact-heading-content { display: inline-flex; align-items: center; white-space: nowrap; }
 .contact-section h2 .idea-light { margin-left: .36em; vertical-align: .08em; }
-.contact-intro { max-width: 650px; margin: 34px 0 0; color: #aaa99f; font-size: 1rem; line-height: 1.9; }
+.contact-intro { max-width: 650px; margin: 34px 0 0; }
 .idea-light { flex: 0 0 auto; width: 52px; height: 52px; display: grid; place-items: center; color: var(--ink); background: var(--paper); border: 1px solid var(--paper); border-radius: 50%; cursor: default; outline: none; transition: background .24s ease, border-color .24s ease, box-shadow .24s ease, transform .24s ease; }
 .idea-light svg { width: 31px; height: 31px; overflow: visible; }
 .idea-light path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
