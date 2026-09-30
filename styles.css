@@ -211,7 +211,7 @@ h1 > em { display: inline-block; font-size: .8em; }
 }
 
 .contact-section { padding: clamp(62px, 7vw, 88px) clamp(20px, 8vw, 130px); background: var(--ink); color: var(--paper); }
-.contact-section > p { margin: 0 0 62px; font-size: .63rem; }
+.contact-section > .mono { margin: 0 0 62px; font-size: .63rem; }
 .contact-section h2 { max-width: 760px; margin: 0; font-size: clamp(2.4rem, 4.4vw, 4.5rem); line-height: 1.03; }
 .contact-heading-content { display: inline-flex; align-items: center; white-space: nowrap; }
 .contact-section h2 .idea-light { margin-left: .36em; vertical-align: .08em; }
@@ -280,7 +280,7 @@ footer a { color: var(--paper); text-decoration: none; }
   .life-photo { width: min(88%, 290px); }
   .life-stamp { right: -24px; bottom: -42px; width: 108px; height: 108px; }
   .contact-section { padding: 82px 18px; }
-  .contact-section > p { margin-bottom: 42px; }
+  .contact-section > .mono { margin-bottom: 42px; }
   .idea-light { width: 40px; height: 40px; }
   .contact-links { margin-top: 50px; }
   footer { padding: 22px 18px; gap: 12px; flex-wrap: wrap; }
