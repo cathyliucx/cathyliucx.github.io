@@ -8,6 +8,7 @@
   --life: #ef5b2a;
   --mono: 'DM Mono', monospace;
   --display: 'Manrope', 'Noto Sans SC', sans-serif;
+  --chinese-display: 'Noto Serif SC', 'Songti SC', serif;
 }
 
 * { box-sizing: border-box; }
@@ -76,9 +77,9 @@ h1 { margin: 0; max-width: 720px; font-size: clamp(2.35rem, 4.2vw, 4rem); line-h
 h1 em, .life-content em, .contact-section em { color: var(--life); font-style: normal; }
 h1 > em { display: inline-block; font-size: .8em; }
 .intro { max-width: 590px; margin: 28px 0 0; color: #3d3e39; font-size: clamp(.92rem, 1.1vw, 1.02rem); line-height: 1.8; }
-.hero-thought { max-width: 720px; margin: 20px 0 0; color: var(--ink); font: 800 clamp(2.35rem, 4.2vw, 4rem)/1.03 var(--display); letter-spacing: -.065em; }
+.hero-thought { max-width: 700px; margin: 26px 0 0; color: var(--ink); font: 700 clamp(1.5rem, 2.55vw, 2.45rem)/1.22 var(--display); letter-spacing: -.055em; }
 .translation { display: inline; margin-left: .42em; color: var(--muted); font: 500 .68em/1.7 'Noto Sans SC', sans-serif; letter-spacing: 0; }
-.hero-thought .translation { margin-left: .42em; font-size: 1rem; letter-spacing: 0; }
+.hero-thought .translation { display: block; max-width: 540px; margin: .72em 0 0; color: #595a54; font: 500 clamp(.98rem, 1.15vw, 1.12rem)/1.8 var(--chinese-display); letter-spacing: .015em; }
 .discipline h2 .translation, .section-heading h2 .translation, .life-content h2 .translation, .contact-section h2 .translation { font-size: .32em; }
 .life-content .translation, .contact-section .translation { color: #aaa99f; }
 .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 30px; }
@@ -118,7 +119,7 @@ h1 > em { display: inline-block; font-size: .8em; }
 .manifesto { padding: clamp(54px, 7vw, 100px) clamp(20px, 8vw, 130px); display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(240px, 380px); gap: clamp(28px, 4vw, 72px); align-items: center; border-bottom: 1px solid var(--ink); }
 .section-number { margin: 5px 0 0; font-size: .65rem; }
 .manifesto-copy p { max-width: 760px; margin: 0; font: 700 clamp(1.6rem, 3.2vw, 3.4rem)/1.28 var(--display); letter-spacing: -.05em; }
-.manifesto-copy .translation { max-width: 620px; }
+.manifesto-copy .translation { display: block; max-width: 640px; margin: .82em 0 0; color: var(--muted); font: 500 clamp(1rem, 1.25vw, 1.2rem)/1.85 var(--chinese-display); letter-spacing: .015em; }
 .research-direction { margin: 0; }
 .research-direction img { display: block; width: 100%; max-height: 340px; object-fit: contain; }
 
