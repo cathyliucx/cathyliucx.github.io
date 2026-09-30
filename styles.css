@@ -52,6 +52,12 @@ a { color: inherit; }
   letter-spacing: -.04em;
   text-decoration: none;
 }
+.wordmark .wordmark-cn {
+  margin-left: .38em;
+  font: 600 .66rem/1 var(--chinese-display);
+  letter-spacing: .03em;
+  vertical-align: .12em;
+}
 .wordmark span { margin-left: 5px; font: 400 .56rem/1 var(--mono); vertical-align: top; }
 .nav-links { display: flex; gap: clamp(18px, 3vw, 46px); }
 .nav-links a { font: 500 .72rem/1 var(--mono); text-decoration: none; }
