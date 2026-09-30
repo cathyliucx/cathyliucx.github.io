@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260930-18">
+  <link rel="stylesheet" href="styles.css?v=20260930-20">
   <link rel="stylesheet" href="projects/project.css?v=20260906-1">
 </head>
 <body class="life-project">
@@ -38,21 +38,15 @@
       <a class="project-meta-card" href="life/reading.html"><span>READING</span><strong>阅读 ↗</strong></a>
     </div>
 
-    <section class="life-map" aria-labelledby="life-map-title">
-      <div class="life-map-heading">
-        <div>
-          <p class="project-field">TRAVEL TRACE / 01</p>
-          <h2 id="life-map-title">去过的地方</h2>
-        </div>
-        <p>去过的地方，会在这里逐一亮起。</p>
-      </div>
+    <section class="life-map" aria-label="旅行世界地图">
       <div class="life-map-frame">
-        <svg class="world-map" viewBox="0 0 1200 560" role="img" aria-label="世界地图，等待标记的旅行地点">
+        <svg class="world-map" viewBox="0 0 1200 560" role="img" aria-label="带有国界的详细世界地图，等待标记的旅行地点">
           <g class="map-grid" aria-hidden="true">
             <path d="M0 112H1200M0 224H1200M0 336H1200M0 448H1200" />
             <path d="M150 0V560M300 0V560M450 0V560M600 0V560M750 0V560M900 0V560M1050 0V560" />
           </g>
-          <g class="map-land" aria-hidden="true">
+          <g class="map-countries" aria-hidden="true"></g>
+          <g class="map-fallback" aria-hidden="true">
             <path d="M98 94 156 52 225 62 262 103 249 138 285 159 262 201 217 211 188 254 143 239 123 193 79 170 62 129Z" />
             <path d="M272 254 318 270 344 323 332 371 357 422 329 501 292 471 279 407 249 354Z" />
             <path d="M500 91 540 70 584 82 600 119 579 147 542 145 514 126Z" />
@@ -65,7 +59,116 @@
           <!-- VISITED_PLACE_MARKERS_END -->
         </svg>
       </div>
+      <div class="china-map-frame">
+        <svg class="china-map" viewBox="0 0 960 720" role="img" aria-label="带有省级边界与主要城市标注的中国地图">
+          <g class="china-provinces" aria-hidden="true"></g>
+          <g class="china-fallback" aria-hidden="true">
+            <path d="M101 187 153 129 226 110 289 129 339 113 404 141 469 130 536 148 608 132 675 160 746 153 823 205 849 257 816 301 781 315 772 359 720 376 697 420 647 429 612 470 555 454 518 493 456 466 414 495 354 476 319 428 256 418 234 373 173 348 155 292Z" />
+            <path d="M777 405 806 390 832 409 829 439 801 453 777 435Z" />
+            <path d="M687 487 709 467 739 477 757 503 745 528 713 527 688 511Z" />
+          </g>
+        </svg>
+      </div>
     </section>
+
+    <script type="module">
+      import { feature } from 'https://cdn.jsdelivr.net/npm/topojson-client@3/+esm';
+      import { geoMercator, geoNaturalEarth1, geoPath } from 'https://cdn.jsdelivr.net/npm/d3-geo@3/+esm';
+
+      const svg = 'http://www.w3.org/2000/svg';
+      const addCityLabels = (layer, projection, cities, prefix) => {
+        for (const city of cities) {
+          const point = projection([city.longitude, city.latitude]);
+          if (!point) continue;
+          const marker = document.createElementNS(svg, 'circle');
+          marker.setAttribute('class', `${prefix}-city-dot`);
+          marker.setAttribute('cx', point[0]);
+          marker.setAttribute('cy', point[1]);
+          marker.setAttribute('r', '2.8');
+          layer.append(marker);
+
+          const label = document.createElementNS(svg, 'text');
+          label.setAttribute('class', `${prefix}-city-label`);
+          label.setAttribute('x', point[0] + (city.dx || 7));
+          label.setAttribute('y', point[1] + (city.dy || -7));
+          label.textContent = city.name;
+          layer.append(label);
+        }
+      };
+
+      const map = document.querySelector('.world-map');
+      const countriesLayer = map?.querySelector('.map-countries');
+
+      if (map && countriesLayer) {
+        try {
+          const response = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+          if (!response.ok) throw new Error('World map data could not be loaded.');
+          const topology = await response.json();
+          const countries = feature(topology, topology.objects.countries);
+          const projection = geoNaturalEarth1().fitSize([1200, 560], countries);
+          const path = geoPath(projection);
+
+          for (const geometry of countries.features) {
+            const country = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            country.setAttribute('class', 'map-country');
+            country.setAttribute('d', path(geometry) || '');
+            countriesLayer.append(country);
+          }
+          addCityLabels(countriesLayer, projection, [
+            { name: 'San Francisco', longitude: -122.42, latitude: 37.77, dx: -70, dy: -8 },
+            { name: 'New York', longitude: -74.01, latitude: 40.71, dx: 8, dy: -8 },
+            { name: 'London', longitude: -0.13, latitude: 51.51, dx: 8, dy: -8 },
+            { name: 'Paris', longitude: 2.35, latitude: 48.86, dx: 8, dy: 13 },
+            { name: 'Dubai', longitude: 55.27, latitude: 25.2, dx: 8, dy: -8 },
+            { name: 'Singapore', longitude: 103.82, latitude: 1.35, dx: 8, dy: 13 },
+            { name: 'Shanghai', longitude: 121.47, latitude: 31.23, dx: 8, dy: -8 },
+            { name: 'Tokyo', longitude: 139.69, latitude: 35.68, dx: 8, dy: 13 },
+            { name: 'Sydney', longitude: 151.21, latitude: -33.87, dx: 8, dy: 13 }
+          ], 'map');
+          map.classList.add('is-detailed');
+        } catch {
+          map.classList.add('uses-fallback');
+        }
+      }
+
+      const chinaMap = document.querySelector('.china-map');
+      const provincesLayer = chinaMap?.querySelector('.china-provinces');
+
+      if (chinaMap && provincesLayer) {
+        try {
+          const response = await fetch('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json');
+          if (!response.ok) throw new Error('China map data could not be loaded.');
+          const china = await response.json();
+          const projection = geoMercator().fitSize([960, 720], china);
+          const path = geoPath(projection);
+
+          for (const province of china.features) {
+            const shape = document.createElementNS(svg, 'path');
+            shape.setAttribute('class', 'china-province');
+            shape.setAttribute('d', path(province) || '');
+            provincesLayer.append(shape);
+          }
+          addCityLabels(provincesLayer, projection, [
+            { name: 'Urumqi', longitude: 87.62, latitude: 43.83, dx: -43, dy: -8 },
+            { name: 'Harbin', longitude: 126.63, latitude: 45.75, dx: 8, dy: -8 },
+            { name: 'Beijing', longitude: 116.41, latitude: 39.9, dx: 8, dy: -8 },
+            { name: 'Xi\'an', longitude: 108.94, latitude: 34.34, dx: -33, dy: -8 },
+            { name: 'Shanghai', longitude: 121.47, latitude: 31.23, dx: 8, dy: 13 },
+            { name: 'Wuhan', longitude: 114.3, latitude: 30.59, dx: -37, dy: 13 },
+            { name: 'Chengdu', longitude: 104.07, latitude: 30.67, dx: -43, dy: -8 },
+            { name: 'Chongqing', longitude: 106.55, latitude: 29.56, dx: 8, dy: 13 },
+            { name: 'Hangzhou', longitude: 120.16, latitude: 30.27, dx: 8, dy: 13 },
+            { name: 'Guangzhou', longitude: 113.26, latitude: 23.13, dx: -50, dy: 15 },
+            { name: 'Shenzhen', longitude: 114.06, latitude: 22.55, dx: 8, dy: 27 },
+            { name: 'Kunming', longitude: 102.83, latitude: 24.88, dx: -41, dy: 13 },
+            { name: 'Lhasa', longitude: 91.11, latitude: 29.65, dx: -31, dy: -8 }
+          ], 'china');
+          chinaMap.classList.add('is-detailed');
+        } catch {
+          chinaMap.classList.add('uses-fallback');
+        }
+      }
+    </script>
 
   </main>
 </body>
