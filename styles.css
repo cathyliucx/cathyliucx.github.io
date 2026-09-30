@@ -88,7 +88,7 @@ h1 > em { display: inline-block; font-size: .8em; }
 .primary-link span { transition: transform .2s ease; }
 .primary-link:hover span { transform: translate(3px, 3px); }
 .text-link { font: 500 .76rem/1 var(--mono); text-underline-offset: 5px; }
-.hero-aside { position: relative; display: grid; place-items: center; border-left: 1px solid var(--line); }
+.hero-aside { position: relative; display: grid; place-items: center; }
 .orbit { position: relative; width: min(22vw, 300px); aspect-ratio: 1; border: 1px solid var(--ink); border-radius: 50%; display: grid; place-items: center; }
 .orbit::before, .orbit::after { content: ''; position: absolute; border: 1px solid var(--line); border-radius: 50%; }
 .orbit::before { width: 70%; height: 70%; }
@@ -235,7 +235,7 @@ footer a { color: var(--paper); text-decoration: none; }
   .site-header { grid-template-columns: 1fr auto; }
   .availability { display: none; }
   .hero { min-height: auto; grid-template-columns: 32px 1fr; }
-  .hero-aside { grid-column: 2; min-height: 330px; border-left: 0; border-top: 1px solid var(--line); }
+  .hero-aside { grid-column: 2; min-height: 330px; }
   .orbit { width: 260px; }
   .scroll-note { grid-column: 2; }
   .manifesto { grid-template-columns: 60px minmax(0, 1fr); }
