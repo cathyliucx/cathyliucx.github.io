@@ -237,14 +237,14 @@ h1 > em { display: inline-block; font-size: .8em; }
 .life-map-frame { overflow: hidden; }
 .world-map { display: block; width: 100%; height: auto; min-height: 230px; }
 .china-map-frame { margin-top: clamp(34px, 5vw, 64px); overflow: hidden; }
-.china-map { display: block; width: min(100%, 860px); height: auto; min-height: 300px; margin: 0 auto; }
-.map-grid { fill: none; stroke: var(--line); stroke-width: 1; opacity: .65; }
+.china-map { display: block; width: 100%; height: auto; min-height: 420px; }
 .map-fallback { fill: rgba(18, 19, 16, .035); stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; }
 .map-country { fill: rgba(18, 19, 16, .035); stroke: var(--ink); stroke-width: .8; stroke-linejoin: round; }
 .china-fallback { fill: rgba(18, 19, 16, .035); stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; }
 .china-province { fill: rgba(18, 19, 16, .035); stroke: var(--ink); stroke-width: .8; stroke-linejoin: round; }
-.map-city-dot, .china-city-dot { fill: var(--ink); }
-.map-city-label, .china-city-label { fill: var(--ink); font: 500 11px/1 var(--mono); letter-spacing: .015em; paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+.visited-place-halo { fill: #ff5a36; opacity: .23; }
+.visited-place-core { fill: #ff5a36; stroke: var(--paper); stroke-width: 1.5px; }
+.visited-place-label { fill: var(--ink); font: 500 11px/1 var(--mono); letter-spacing: .015em; paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
 .world-map.is-detailed .map-fallback { display: none; }
 .china-map.is-detailed .china-fallback { display: none; }
 footer { padding: 24px clamp(20px, 4vw, 64px); display: flex; justify-content: space-between; background: var(--ink); color: #8c8c84; font: 400 .58rem/1 var(--mono); }
@@ -303,7 +303,7 @@ footer a { color: var(--paper); text-decoration: none; }
   footer span:nth-child(2) { display: none; }
   .life-project .life-meta { grid-template-columns: 1fr; }
   .world-map { width: 160%; margin-left: -30%; }
-  .china-map { width: 145%; max-width: none; margin-left: -22.5%; }
+  .china-map { width: 135%; min-height: 360px; margin-left: -17.5%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
