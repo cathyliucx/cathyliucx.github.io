@@ -121,6 +121,7 @@ h1 > em { display: inline-block; font-size: .8em; }
 .section-number { margin: 5px 0 0; font-size: .65rem; }
 .manifesto-copy p { max-width: 760px; margin: 0; font: 700 clamp(1.6rem, 3.2vw, 3.4rem)/1.28 var(--display); letter-spacing: -.05em; }
 .manifesto-copy .translation { display: block; max-width: 640px; margin: .82em 0 0; color: var(--muted); font: 500 clamp(1rem, 1.25vw, 1.2rem)/1.85 var(--chinese-display); letter-spacing: .015em; }
+.quote-attribution { display: block; margin-top: .9em; color: var(--ink); font: 500 .68em/1 var(--mono); letter-spacing: .04em; }
 .research-direction { margin: 0; }
 .research-direction img { display: block; width: 100%; max-height: 340px; object-fit: contain; }
 
