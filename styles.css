@@ -211,8 +211,8 @@ h1 > em { display: inline-block; font-size: .8em; }
 .contact-section { padding: clamp(62px, 7vw, 88px) clamp(20px, 8vw, 130px); background: var(--ink); color: var(--paper); }
 .contact-section > p { margin: 0 0 62px; font-size: .63rem; }
 .contact-section h2 { max-width: 760px; margin: 0; font-size: clamp(2.4rem, 4.4vw, 4.5rem); line-height: 1.03; }
-.contact-intro-row { max-width: 730px; margin: 34px 0 0; display: flex; align-items: center; gap: 24px; }
-.contact-intro { flex: 1; margin: 0; color: #aaa99f; font-size: clamp(.95rem, 1.25vw, 1.12rem); line-height: 1.9; }
+.contact-section h2 .idea-light { margin-left: .16em; vertical-align: .08em; }
+.contact-intro { max-width: 650px; margin: 34px 0 0; color: #aaa99f; font-size: clamp(.95rem, 1.25vw, 1.12rem); line-height: 1.9; }
 .idea-light { flex: 0 0 auto; width: 52px; height: 52px; display: grid; place-items: center; color: var(--ink); background: var(--paper); border: 1px solid var(--paper); border-radius: 50%; cursor: default; outline: none; transition: background .24s ease, border-color .24s ease, box-shadow .24s ease, transform .24s ease; }
 .idea-light svg { width: 31px; height: 31px; overflow: visible; }
 .idea-light path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -277,7 +277,6 @@ footer a { color: var(--paper); text-decoration: none; }
   .life-stamp { right: -24px; bottom: -42px; width: 108px; height: 108px; }
   .contact-section { padding: 82px 18px; }
   .contact-section > p { margin-bottom: 42px; }
-  .contact-intro-row { gap: 16px; }
   .idea-light { width: 46px; height: 46px; }
   .contact-links { margin-top: 50px; }
   footer { padding: 22px 18px; gap: 12px; flex-wrap: wrap; }
