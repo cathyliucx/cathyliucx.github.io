@@ -120,7 +120,7 @@ h1 > em { display: inline-block; font-size: .8em; }
 .manifesto-copy p { max-width: 760px; margin: 0; font: 700 clamp(1.6rem, 3.2vw, 3.4rem)/1.28 var(--display); letter-spacing: -.05em; }
 .manifesto-copy .translation { max-width: 620px; }
 .research-direction { margin: 0; }
-.research-direction img { display: block; width: 100%; max-height: 340px; object-fit: contain; mix-blend-mode: multiply; }
+.research-direction img { display: block; width: 100%; max-height: 340px; object-fit: contain; }
 
 .research-grid { display: grid; grid-template-columns: 1fr; border-bottom: 1px solid var(--ink); }
 .discipline { position: relative; min-height: 540px; padding: clamp(30px, 4vw, 52px); }
@@ -220,7 +220,10 @@ h1 > em { display: inline-block; font-size: .8em; }
 .idea-light:hover .bulb-fill, .idea-light:focus-visible .bulb-fill { fill: #ffd24d; }
 .idea-light:hover .idea-rays, .idea-light:focus-visible .idea-rays { opacity: 1; }
 .contact-links { margin-top: 72px; display: flex; gap: 14px; flex-wrap: wrap; }
-.contact-links a { min-width: 150px; padding: 16px 18px; border: 1px solid #5b5c55; font: 500 .68rem/1 var(--mono); text-decoration: none; transition: background .2s, color .2s; }
+.contact-links a, .contact-channel { min-width: 150px; padding: 16px 18px; border: 1px solid #5b5c55; font: 500 .68rem/1 var(--mono); text-decoration: none; }
+.contact-links a { transition: background .2s, color .2s; }
+.contact-channel { display: inline-flex; align-items: center; gap: 9px; color: var(--paper); }
+.contact-channel small { color: #8c8c84; font: 500 .7rem/1 'Noto Sans SC', sans-serif; }
 .contact-links a:hover { background: var(--paper); color: var(--ink); }
 footer { padding: 24px clamp(20px, 4vw, 64px); display: flex; justify-content: space-between; background: var(--ink); color: #8c8c84; font: 400 .58rem/1 var(--mono); }
 footer a { color: var(--paper); text-decoration: none; }
