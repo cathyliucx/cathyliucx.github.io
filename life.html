@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260930-21">
+  <link rel="stylesheet" href="styles.css?v=20260930-22">
   <link rel="stylesheet" href="projects/project.css?v=20260906-1">
 </head>
 <body class="life-project">
@@ -65,6 +65,7 @@
           </g>
         </svg>
       </div>
+      <p class="map-legend"><span aria-hidden="true"></span>MY FOOTPRINTS / 我的足迹</p>
     </section>
 
     <script type="module">
@@ -84,7 +85,7 @@
       const visitedPlaces = [
         { scope: 'map', name: 'London', longitude: -0.13, latitude: 51.51, dx: 10, dy: 17 },
         { scope: 'map', name: 'York', longitude: -1.08, latitude: 53.96, dx: -28, dy: -17 },
-        { scope: 'map', name: 'Paris', longitude: 2.35, latitude: 48.86, dx: 13, dy: 37 },
+        { scope: 'map', name: 'Paris', longitude: 2.35, latitude: 48.86, markerDx: 18, markerDy: 15, dx: 8, dy: 18 },
         { scope: 'map', name: 'Helsinki', longitude: 24.94, latitude: 60.17, dx: 10, dy: -10 },
         { scope: 'map', name: 'Qatar', longitude: 51.53, latitude: 25.29, dx: 10, dy: 15 },
         { scope: 'china', name: 'Xi\'an', longitude: 108.94, latitude: 34.34, dx: -34, dy: -10 },
@@ -94,9 +95,9 @@
         { scope: 'china', name: 'Chengdu', longitude: 104.07, latitude: 30.67, dx: -47, dy: -10 },
         { scope: 'china', name: 'Guangzhou', longitude: 113.26, latitude: 23.13, dx: -57, dy: -18 },
         { scope: 'china', name: 'Shenzhen', longitude: 114.06, latitude: 22.55, dx: 10, dy: 20 },
-        { scope: 'china', name: 'Hong Kong', longitude: 114.17, latitude: 22.32, dx: -30, dy: 43 },
+        { scope: 'china', name: 'Hong Kong', longitude: 114.17, latitude: 22.32, markerDx: -18, markerDy: 20, dx: -48, dy: 23 },
         { scope: 'china', name: 'Hangzhou', longitude: 120.16, latitude: 30.27, dx: 19, dy: 20 },
-        { scope: 'china', name: 'Ningbo', longitude: 121.55, latitude: 29.87, dx: 22, dy: 42 }
+        { scope: 'china', name: 'Ningbo', longitude: 121.55, latitude: 29.87, markerDx: -14, markerDy: 18, dx: -45, dy: 22 }
       ];
       const addVisitedPlaces = (layer, projection, scope) => {
         for (const place of visitedPlaces.filter((item) => item.scope === scope)) {
@@ -104,25 +105,27 @@
           if (!point) continue;
           const marker = document.createElementNS(svg, 'g');
           marker.setAttribute('class', 'visited-place');
+          const markerX = point[0] + (place.markerDx || 0);
+          const markerY = point[1] + (place.markerDy || 0);
 
           const halo = document.createElementNS(svg, 'circle');
           halo.setAttribute('class', 'visited-place-halo');
-          halo.setAttribute('cx', point[0]);
-          halo.setAttribute('cy', point[1]);
+          halo.setAttribute('cx', markerX);
+          halo.setAttribute('cy', markerY);
           halo.setAttribute('r', '8');
           marker.append(halo);
 
           const core = document.createElementNS(svg, 'circle');
           core.setAttribute('class', 'visited-place-core');
-          core.setAttribute('cx', point[0]);
-          core.setAttribute('cy', point[1]);
+          core.setAttribute('cx', markerX);
+          core.setAttribute('cy', markerY);
           core.setAttribute('r', '3.5');
           marker.append(core);
 
           const label = document.createElementNS(svg, 'text');
           label.setAttribute('class', 'visited-place-label');
-          label.setAttribute('x', point[0] + (place.dx || 9));
-          label.setAttribute('y', point[1] + (place.dy || -9));
+          label.setAttribute('x', markerX + (place.dx || 9));
+          label.setAttribute('y', markerY + (place.dy || -9));
           label.textContent = place.name;
           marker.append(label);
           layer.append(marker);
