@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260930-17">
+  <link rel="stylesheet" href="styles.css?v=20260930-18">
   <link rel="stylesheet" href="projects/project.css?v=20260906-1">
 </head>
 <body class="life-project">
@@ -37,6 +37,35 @@
       <a class="project-meta-card" href="life/travel.html"><span>TRAVEL</span><strong>旅行 ↗</strong></a>
       <a class="project-meta-card" href="life/reading.html"><span>READING</span><strong>阅读 ↗</strong></a>
     </div>
+
+    <section class="life-map" aria-labelledby="life-map-title">
+      <div class="life-map-heading">
+        <div>
+          <p class="project-field">TRAVEL TRACE / 01</p>
+          <h2 id="life-map-title">去过的地方</h2>
+        </div>
+        <p>去过的地方，会在这里逐一亮起。</p>
+      </div>
+      <div class="life-map-frame">
+        <svg class="world-map" viewBox="0 0 1200 560" role="img" aria-label="世界地图，等待标记的旅行地点">
+          <g class="map-grid" aria-hidden="true">
+            <path d="M0 112H1200M0 224H1200M0 336H1200M0 448H1200" />
+            <path d="M150 0V560M300 0V560M450 0V560M600 0V560M750 0V560M900 0V560M1050 0V560" />
+          </g>
+          <g class="map-land" aria-hidden="true">
+            <path d="M98 94 156 52 225 62 262 103 249 138 285 159 262 201 217 211 188 254 143 239 123 193 79 170 62 129Z" />
+            <path d="M272 254 318 270 344 323 332 371 357 422 329 501 292 471 279 407 249 354Z" />
+            <path d="M500 91 540 70 584 82 600 119 579 147 542 145 514 126Z" />
+            <path d="M540 175 584 159 627 185 648 257 621 315 575 293 555 242Z" />
+            <path d="M603 96 676 66 764 82 803 118 861 121 912 152 981 164 1033 204 1010 244 951 252 913 296 845 286 803 321 747 289 705 246 650 224 625 180Z" />
+            <path d="M944 354 989 341 1034 365 1047 411 1010 446 965 429 931 392Z" />
+            <path d="M165 432 253 421 312 442 345 480 326 513 249 525 186 505 145 470Z" />
+          </g>
+          <!-- VISITED_PLACE_MARKERS_START -->
+          <!-- VISITED_PLACE_MARKERS_END -->
+        </svg>
+      </div>
+    </section>
 
   </main>
 </body>
