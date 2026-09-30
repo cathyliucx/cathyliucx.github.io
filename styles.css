@@ -80,6 +80,7 @@ h1 > em { display: inline-block; font-size: .8em; }
 .hero-thought { max-width: 700px; margin: 26px 0 0; color: var(--ink); font: 700 clamp(1.5rem, 2.55vw, 2.45rem)/1.22 var(--display); letter-spacing: -.055em; }
 .translation { display: inline; margin-left: .42em; color: var(--muted); font: 500 .68em/1.7 'Noto Sans SC', sans-serif; letter-spacing: 0; }
 .hero-thought .translation { display: block; max-width: 540px; margin: .72em 0 0; color: #595a54; font: 500 clamp(.98rem, 1.15vw, 1.12rem)/1.8 var(--chinese-display); letter-spacing: .015em; }
+.notes-intro .translation, .life-content p .translation, .contact-intro .translation { margin-left: .35em; font: inherit; letter-spacing: 0; }
 .discipline h2 .translation, .section-heading h2 .translation, .life-content h2 .translation, .contact-section h2 .translation { font-size: .32em; }
 .life-content .translation, .contact-section .translation { color: #aaa99f; }
 .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 30px; }
